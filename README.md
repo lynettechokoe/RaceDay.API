@@ -11,7 +11,7 @@ Part 2 - RESTful API
 ### Roles
 - **Organiser**: Can create/update/delete events, manage categories, capture results
 - **Participant**: Can view events, enroll in events, view own results
-![Build Status]
+![Build Status] https://github.com/lynettechokoe/RaceDay.API.git
 # 🏁 RaceDay API - RESTful API Development
 
 ![Build Status](https://github.com/YOUR-USERNAME/RaceDay/actions/workflows/ci.yml/badge.svg)
@@ -96,4 +96,4 @@ This API was built as **Part 2 of the Programming 2B POE (Portfolio of Evidence)
 
 1. **Clone the repository**
    ```bash
-   git clone 
+   git clone vhttps://github.com/lynettechokoe/RaceDay.API.git
