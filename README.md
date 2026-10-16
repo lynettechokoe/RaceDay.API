@@ -72,3 +72,28 @@ This API was built as **Part 2 of the Programming 2B POE (Portfolio of Evidence)
 ---
 
 ## 🏗 System Architecture
+
+### Layers:
+- **Controllers** — Receive HTTP requests, return responses
+- **Services** — Handle business logic (authentication, hashing, JWT)
+- **DTOs** — Data Transfer Objects for secure communication
+- **Models** — Database entities
+- **DbContext** — Entity Framework Core database context
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Windows OS**
+- **Visual Studio 2022** (Community Edition or higher)
+- **.NET 8.0 SDK** — [Download](https://dotnet.microsoft.com/download)
+- **SQL Server** (LocalDB or full instance)
+- **Git** — [Download](https://git-scm.com/)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone 
