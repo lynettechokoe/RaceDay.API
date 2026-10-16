@@ -11,4 +11,4 @@ Part 2 - RESTful API
 ### Roles
 - **Organiser**: Can create/update/delete events, manage categories, capture results
 - **Participant**: Can view events, enroll in events, view own results
-
+![Build Status]
