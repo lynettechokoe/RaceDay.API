@@ -329,4 +329,4 @@ text
 
 1. **Clone the repository:**
    ```bash
-   git clone 
+   git clone [text](https://github.com/lynettechokoe/RaceDay.API.git)
