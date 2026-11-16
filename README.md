@@ -146,3 +146,187 @@ This solution is split into two main projects:
 ---
 
 ## 🏗 System Architecture
+
+┌─────────────────────────┐ ┌─────────────────────────┐
+│ RaceDay.MVC │ HTTP │ RaceDay.API │
+│ (Front-End) │ ───────> │ (Back-End) │
+│ │ JSON │ │
+│ - Session Management │ │ - JWT Auth │
+│ - HTML/CSS/Bootstrap │ │ - Entity Framework │
+│ - Consumes API │ │ - Azure Blob Storage │
+└─────────────────────────┘ └─────────────────────────┘
+│
+▼
+┌─────────────────────────┐
+│ SQL Server │
+│ Database │
+└─────────────────────────┘
+
+text
+
+---
+
+## 🚀 Getting Started (Local Run)
+
+### Prerequisites
+- Visual Studio 2022
+- .NET 8.0 SDK
+- SQL Server (LocalDB is fine)
+- Docker Desktop (for containerization)
+
+### Setup Steps
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/RaceDay.git
+Open the solution:
+Double-click RaceDay.sln to open it in Visual Studio.
+
+Update the Database:
+
+In Visual Studio, go to Tools → NuGet Package Manager → Package Manager Console.
+
+Ensure the Default Project is set to RaceDay.API.
+
+Run:
+
+powershell
+Update-Database
+Configure API URL:
+
+In RaceDay.MVC, open appsettings.json.
+
+Ensure "ApiSettings": { "BaseUrl": "https://localhost:7123" } matches the port your API runs on.
+
+Run the solution:
+
+Right-click the Solution → Properties.
+
+Select Multiple startup projects.
+
+Set both RaceDay.API and RaceDay.MVC to Start.
+
+Press F5.
+
+🐳 Docker Instructions
+The RaceDay.MVC application is fully containerized. A Dockerfile is included in the root directory.
+
+How to run the container:
+Ensure Docker Desktop is running on your machine.
+
+Open a terminal (Command Prompt or PowerShell) in the root folder of the project.
+
+Build the Docker image:
+
+bash
+docker build -t raceday-mvc -f RaceDay.MVC/Dockerfile .
+Run the container:
+
+bash
+docker run -d -p 8080:8080 -p 8081:8081 --name raceday-app raceday-mvc
+Open your browser and navigate to: http://localhost:8080
+
+🔐 Authentication & Roles
+The platform uses Session Management to store the JWT Token and User Role upon login.
+
+Organiser
+Access to the Organiser Dashboard.
+
+Can create, edit, and delete events.
+
+Can upload event banner images (via Azure Blob Storage).
+
+Can define age/distance categories.
+
+Can capture results for participants.
+
+Participant
+Access to the Participant Dashboard.
+
+Can browse and filter upcoming events.
+
+Can enroll in events.
+
+Can view their personal race history and results.
+
+Can update their profile and profile picture.
+
+✨ Feature Breakdown
+Part 3 Implemented Features:
+Session-Based Auth: User state is maintained across pages using ASP.NET Core Sessions.
+
+Role-Specific UI: Organisers and Participants see completely different navigation menus and dashboards.
+
+Dynamic API Calls: MVC uses HttpClient to fetch data from the Part 2 API. No direct database access exists in the MVC project.
+
+Graceful Error Handling: Validation messages are displayed if the API returns errors (e.g., invalid login).
+
+☁️ Azure Blob Storage
+File handling is done entirely through the API.
+
+The MVC front-end sends an IFormFile to the API.
+
+The API receives the file, connects to Azure Blob Storage, creates a container (event-images), and uploads the file.
+
+The API returns the public URL of the uploaded image.
+
+The MVC app displays the image using the returned URL.
+
+🔄 CI/CD Pipeline
+This project uses GitHub Actions for continuous integration.
+
+Workflow: Triggers on every push to main or part3-mvc.
+
+Build: Builds both RaceDay.API and RaceDay.MVC in Release mode.
+
+Test: Runs all xUnit tests.
+
+CI Status:
+https://ci-success.png/
+
+📂 Project Structure
+text
+RaceDay/
+├── .github/workflows/ci.yml     ← GitHub Actions
+├── RaceDay.API/                 ← Part 2 (Web API)
+│   ├── Controllers/
+│   ├── Models/
+│   ├── Data/
+│   └── Program.cs
+├── RaceDay.MVC/                 ← Part 3 (Frontend)
+│   ├── Controllers/             ← Account, Organiser, Participant
+│   ├── Views/                   ← HTML Pages
+│   ├── Services/                ← ApiService (HttpClient logic)
+│   └── Program.cs
+├── Dockerfile                   ← Docker configuration
+├── ci-success.png
+└── README.md
+👤 Author
+Name: [Your Full Name]
+Student Number: [Your Student Number]
+Module: PROG 2B — Programming 2B
+Institution: The Independent Institute of Education (IIE)
+Year: 2026
+
+📄 License
+This project is submitted as part of academic requirements for Programming 2B (PROG 2B) at The IIE. All rights reserved.
+
+Built with ❤️ in South Africa — Ready, Set, RaceDay! 🏁
+
+text
+
+---
+
+## 🚀 Getting Started (Local Run)
+
+### Prerequisites
+- Visual Studio 2022
+- .NET 8.0 SDK
+- SQL Server (LocalDB is fine)
+- Docker Desktop (for containerization)
+
+### Setup Steps
+
+1. **Clone the repository:**
+   ```bash
+   git clone 
